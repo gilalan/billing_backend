@@ -1,4 +1,4 @@
-const PORT = 3003;
+const PORT = process.env.PORT || 3003;
 
 const bodyParser = require('body-parser');
 const express = require('express'); //singleton, posso declarar em outro lugar que vai ser a mesma instância
