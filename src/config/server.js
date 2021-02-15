@@ -2,12 +2,14 @@ const PORT = process.env.PORT || 3003;
 
 //const bodyParser = require('body-parser');
 const express = require('express'); //singleton, posso declarar em outro lugar que vai ser a mesma instância
+const queryParser = require('express-query-int');
 const cors = require('cors');
 //const allowCors = require('./cors');
 //server.use(allowCors);
 
 const server = express();
 
+server.use(queryParser());
 server.use(express.urlencoded({ extended: true }));
 server.use(express.json());
 server.use((req, res, next) => {
