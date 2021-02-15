@@ -2,11 +2,10 @@ const _ = require('lodash');
 
 module.exports = (req, res, next) => {
 
-    console.log("#### ErrorMiddleware #####");
+    //console.log("#### ErrorMiddleware #####");
     const bundle = res.locals.bundle;
     if (bundle.errors) {
-        
-        console.log('Erros: ', bundle.errors);
+                
         const errors = parseErrors(bundle.errors);
         res.status(500).json({ errors });
 
@@ -18,6 +17,9 @@ module.exports = (req, res, next) => {
 const parseErrors = (bundleErrors) => {
 
     const errors = [];
-    _.forIn(bundleErrors, error => errors.push(error.message));
+    _.forIn(bundleErrors, error => {
+        errors.push(error.message)
+        console.error(error.message)
+    });
     return errors;
 }
